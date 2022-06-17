@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:background="#fff">
+
+        <!--  Header  Starts-->
+        <LinearLayout android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="5dip"
+            android:paddingBottom="5dip">
+
+            <!-- Logo Start-->
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".20"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.024"
+                app:srcCompat="@drawable/logo"
+                android:contentDescription="@string/logo_image" />
+            <!-- Logo Ends -->
+        </LinearLayout>
+        <!--  Header Ends -->
+
+
+        <!-- Registration Form -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:layout_below="@id/header">
+
+            <!-- First Name -->
+            <EditText
+                android:id="@+id/editTextFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@id/imageView"
+                android:layout_marginTop="5dp"
+                android:background="#2DCAB8B8"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A"
+                android:layout_marginBottom="20dip"
+                android:hint="First Name"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:singleLine="true" />
+
+            <!-- Last Name -->
+            <EditText
+                android:id="@+id/editTextLastName"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@id/editTextFirstName"
+                android:layout_marginTop="5dp"
+                android:background="#2DCAB8B8"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A"
+                android:layout_marginBottom="20dip"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:hint="Last Name" />
+
+            <!-- Phone Number -->
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@id/editTextFirstName"
+                android:layout_marginTop="5dp"
+                android:background="#2DCAB8B8"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A"
+                android:layout_marginBottom="20dip"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:hint="Phone Number"/>
+
+            <!--  Email Label -->
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@id/editTextPhoneNumber"
+                android:layout_marginTop="5dp"
+                android:background="#2DCAB8B8"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A"
+                android:layout_marginBottom="20dip"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:hint="Email"/>
+
+            <!-- Password Label -->
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@id/editTextEmail"
+                android:layout_marginTop="5dp"
+                android:background="#2DCAB8B8"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A"
+                android:layout_marginBottom="20dip"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:hint="Password"/>
+
+            <!-- Confirm Password Label -->
+            <EditText
+                android:id="@+id/editTextConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@id/editTextEmail"
+                android:layout_marginTop="5dp"
+                android:background="#2DCAB8B8"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A"
+                android:layout_marginBottom="20dip"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:singleLine="true"
+                android:hint="Confirm Password"/>
+
+            <!-- Register Button -->
+            <Button android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:backgroundTint="#000000"
+                android:padding="10dp"
+                app:layout_constraintVertical_bias="0.173"
+                android:layout_marginTop="10dip"
+                android:text="Register New Account"/>
+
+            <!-- Button to Login Screen -->
+            <TextView
+                android:id="@+id/TextViewLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnRegister"
+                android:layout_centerHorizontal="true"
+                android:text="Already have an account? "
+                android:textSize="20dp"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/TextViewLogin"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#000000"
+                android:padding="10dp"
+                android:text="Login"
+                app:layout_constraintVertical_bias="0.173"/>
+
+        </LinearLayout>
+        <!-- Registration Form Ends -->
+    </RelativeLayout>
+</ScrollView>
