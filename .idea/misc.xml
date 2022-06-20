@@ -3,17 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/drawable/ic_heartoutline.xml" value="0.1" />
+        <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/activity_main.xml" value="0.2246376811594203" />
+        <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/activity_wishlist.xml" value="0.1" />
+        <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/menu/bottomnavmenu.xml" value="0.1" />
         <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_registration.xml" value="0.33" />
-        <entry key="..\:/Users/khbul/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/drawable/ic_burgermenu.xml" value="0.178" />
-        <entry key="..\:/Users/khbul/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/drawable/ic_heartfill.xml" value="0.178" />
-        <entry key="..\:/Users/khbul/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/drawable/ic_hearthfill.xml" value="0.178" />
-        <entry key="..\:/Users/khbul/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/drawable/ic_heartoutline.xml" value="0.178" />
-        <entry key="..\:/Users/khbul/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_customer_dashboard.xml" value="0.536" />
-        <entry key="..\:/Users/khbul/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
-        <entry key="..\:/Users/khbul/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
-        <entry key="..\:/Users/khbul/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_registration.xml" value="0.19610507246376813" />
-        <entry key="..\:/Users/khbul/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_wishlist.xml" value="0.264" />
       </map>
     </option>
   </component>
