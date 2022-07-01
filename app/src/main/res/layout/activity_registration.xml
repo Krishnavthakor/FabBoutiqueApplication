@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".RegistrationActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:background="#fff">
+        android:layout_height="wrap_content"
+        android:background="#fff">
 
         <!--  Header  Starts-->
-        <LinearLayout android:id="@+id/header"
+        <LinearLayout
+            android:id="@+id/header"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -20,10 +26,12 @@
             android:paddingBottom="5dip">
 
             <!-- Logo Start-->
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
+                android:contentDescription="@string/logo_image"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent=".20"
@@ -31,8 +39,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.024"
-                app:srcCompat="@drawable/logo"
-                android:contentDescription="@string/logo_image" />
+                app:srcCompat="@drawable/logo" />
             <!-- Logo Ends -->
         </LinearLayout>
         <!--  Header Ends -->
@@ -40,11 +47,11 @@
 
         <!-- Registration Form -->
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dip"
-            android:layout_below="@id/header">
+            android:layout_below="@id/header"
+            android:orientation="vertical"
+            android:padding="10dip">
 
             <!-- First Name -->
             <EditText
@@ -53,17 +60,17 @@
                 android:layout_height="70dp"
                 android:layout_below="@id/imageView"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#2DCAB8B8"
                 android:drawablePadding="20dp"
                 android:ems="10"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="#5A5A5A"
-                android:layout_marginBottom="20dip"
                 android:hint="First Name"
                 android:inputType="text"
                 android:minHeight="48dp"
-                android:singleLine="true" />
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A" />
 
             <!-- Last Name -->
             <EditText
@@ -72,17 +79,17 @@
                 android:layout_height="70dp"
                 android:layout_below="@id/editTextFirstName"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#2DCAB8B8"
                 android:drawablePadding="20dp"
                 android:ems="10"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="#5A5A5A"
-                android:layout_marginBottom="20dip"
+                android:hint="Last Name"
                 android:inputType="text"
                 android:minHeight="48dp"
+                android:padding="10dp"
                 android:singleLine="true"
-                android:hint="Last Name" />
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A" />
 
             <!-- Phone Number -->
             <EditText
@@ -91,17 +98,17 @@
                 android:layout_height="70dp"
                 android:layout_below="@id/editTextFirstName"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#2DCAB8B8"
                 android:drawablePadding="20dp"
                 android:ems="10"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="#5A5A5A"
-                android:layout_marginBottom="20dip"
+                android:hint="Phone Number"
                 android:inputType="text"
                 android:minHeight="48dp"
+                android:padding="10dp"
                 android:singleLine="true"
-                android:hint="Phone Number"/>
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A" />
 
             <!--  Email Label -->
             <EditText
@@ -110,17 +117,17 @@
                 android:layout_height="70dp"
                 android:layout_below="@id/editTextPhoneNumber"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#2DCAB8B8"
                 android:drawablePadding="20dp"
                 android:ems="10"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="#5A5A5A"
-                android:layout_marginBottom="20dip"
+                android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:minHeight="48dp"
+                android:padding="10dp"
                 android:singleLine="true"
-                android:hint="Email"/>
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A" />
 
             <!-- Password Label -->
             <EditText
@@ -129,17 +136,17 @@
                 android:layout_height="70dp"
                 android:layout_below="@id/editTextEmail"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#2DCAB8B8"
                 android:drawablePadding="20dp"
                 android:ems="10"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="#5A5A5A"
-                android:layout_marginBottom="20dip"
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
+                android:padding="10dp"
                 android:singleLine="true"
-                android:hint="Password"/>
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A" />
 
             <!-- Confirm Password Label -->
             <EditText
@@ -148,28 +155,29 @@
                 android:layout_height="70dp"
                 android:layout_below="@id/editTextEmail"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="#2DCAB8B8"
                 android:drawablePadding="20dp"
                 android:ems="10"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="#5A5A5A"
-                android:layout_marginBottom="20dip"
+                android:hint="Confirm Password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
+                android:padding="10dp"
                 android:singleLine="true"
-                android:hint="Confirm Password"/>
+                android:textColor="@color/black"
+                android:textColorHint="#5A5A5A" />
 
             <!-- Register Button -->
-            <Button android:id="@+id/btnRegister"
+            <Button
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_centerVertical="true"
+                android:layout_marginTop="10dip"
                 android:backgroundTint="#000000"
                 android:padding="10dp"
-                app:layout_constraintVertical_bias="0.173"
-                android:layout_marginTop="10dip"
-                android:text="Register New Account"/>
+                android:text="Register New Account"
+                app:layout_constraintVertical_bias="0.173" />
 
             <!-- Button to Login Screen -->
             <TextView
@@ -178,9 +186,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnRegister"
                 android:layout_centerHorizontal="true"
+                android:gravity="center"
                 android:text="Already have an account? "
-                android:textSize="20dp"
-                android:gravity="center" />
+                android:textSize="20dp" />
 
             <Button
                 android:id="@+id/btnLogin"
@@ -192,9 +200,11 @@
                 android:backgroundTint="#000000"
                 android:padding="10dp"
                 android:text="Login"
-                app:layout_constraintVertical_bias="0.173"/>
+                android:gravity="center"
+                app:layout_constraintVertical_bias="0.173" />
 
         </LinearLayout>
         <!-- Registration Form Ends -->
     </RelativeLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
