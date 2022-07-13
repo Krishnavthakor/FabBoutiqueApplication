@@ -1,4 +1,4 @@
-package com.example.fabboutique.adapter;
+package com.example.fabboutique.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fabboutique.Models.ProductCategory;
 import com.example.fabboutique.R;
-import com.example.fabboutique.model.ProductCategory;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class ProductCategoryAdapter extends RecyclerView.Adapter<ProductCategory
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
 
-        holder.catagoryName.setText(productCategoryList.get(position).getProductName());
+        holder.catagoryName.setText(productCategoryList.get(position).getCategoryName());
 
     }
 

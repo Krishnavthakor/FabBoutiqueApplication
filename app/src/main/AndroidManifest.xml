@@ -28,16 +28,43 @@
         <activity
             android:name=".ForgotPassword"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
+        <activity
+            android:name=".ManageCustomOrders"
+            android:exported="false" />
+        <activity
+            android:name=".ManageOrders"
+            android:exported="false" />
+        <activity
+            android:name=".ManageInventory"
+            android:exported="false" />
+        <activity
+            android:name=".ManageCustomers"
+            android:exported="false" />
+        <activity
+            android:name=".AdminDashboard"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AddProduct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".RegistrationActivity"
             android:exported="true">

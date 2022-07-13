@@ -1,4 +1,4 @@
-package com.example.fabboutique.model;
+package com.example.fabboutique.Models;
 
 public class Products {
 

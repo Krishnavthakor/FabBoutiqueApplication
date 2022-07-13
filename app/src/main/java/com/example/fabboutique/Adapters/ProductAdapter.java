@@ -1,4 +1,4 @@
-package com.example.fabboutique.adapter;
+package com.example.fabboutique.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fabboutique.Productdetails;
 import com.example.fabboutique.R;
-import com.example.fabboutique.model.Products;
+import com.example.fabboutique.Models.Products;
 
 import java.util.List;
 
