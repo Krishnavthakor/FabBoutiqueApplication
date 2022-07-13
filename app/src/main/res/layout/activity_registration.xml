@@ -148,25 +148,6 @@
                 android:textColor="@color/black"
                 android:textColorHint="#5A5A5A" />
 
-            <!-- Confirm Password Label -->
-            <EditText
-                android:id="@+id/editTextConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_below="@id/editTextEmail"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="#2DCAB8B8"
-                android:drawablePadding="20dp"
-                android:ems="10"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:padding="10dp"
-                android:singleLine="true"
-                android:textColor="@color/black"
-                android:textColorHint="#5A5A5A" />
-
             <!-- Register Button -->
             <Button
                 android:id="@+id/btnRegister"
@@ -199,8 +180,9 @@
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#000000"
                 android:padding="10dp"
-                android:text="Login"
-                android:gravity="center"
+                android:text="Login Here"
+                android:onClick="btnLogin"
+                android:layout_gravity="center"
                 app:layout_constraintVertical_bias="0.173" />
 
         </LinearLayout>
