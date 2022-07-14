@@ -3,29 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/drawable/border.xml" value="0.1" />
         <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/drawable/homeicon.xml" value="0.1" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/drawable/lockicon.xml" value="0.108" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/drawable/profileicon.xml" value="0.1" />
         <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/drawable/selector.xml" value="0.1" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_add_product.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_dashboard.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
+        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_manage_custom_orders.xml" value="0.19010416666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_manage_customers.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_manage_inventory.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_manage_orders.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_registration.xml" value="0.22" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_wishlist.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/border.xml" value="0.19010416666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/customer_list_item.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/fragment_tops.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/activity_registration.xml" value="0.33" />
         <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/fragment_wishlist.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/RIYA/AndroidStudioProjects/FabBoutiqueApplication/app/src/main/res/layout/list_item.xml" value="0.1" />
       </map>
     </option>
   </component>
