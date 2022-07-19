@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddProduct">
+    tools:context=".AddCategory">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             </com.google.android.material.appbar.AppBarLayout>
 
 
-            <!-- Add Product Form -->
+            <!-- Add Category Form -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
 
                 <!-- Name -->
                 <EditText
-                    android:id="@+id/editTextName"
+                    android:id="@+id/editTextCName"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_below="@id/headerLayout"
@@ -87,7 +87,26 @@
                     android:background="#2DCAB8B8"
                     android:drawablePadding="20dp"
                     android:ems="10"
-                    android:hint="Product Name"
+                    android:hint="Category Name"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="#5A5A5A" />
+
+                <!-- Title -->
+                <EditText
+                    android:id="@+id/editTextCTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_below="@id/editTextCName"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="#2DCAB8B8"
+                    android:drawablePadding="20dp"
+                    android:ems="10"
+                    android:hint="Category Title"
                     android:inputType="text"
                     android:minHeight="48dp"
                     android:padding="10dp"
@@ -97,16 +116,16 @@
 
                 <!-- Description -->
                 <EditText
-                    android:id="@+id/editTextDescription"
+                    android:id="@+id/editTextCDescription"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:layout_below="@id/editTextName"
+                    android:layout_below="@id/editTextCTitle"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:background="#2DCAB8B8"
                     android:drawablePadding="20dp"
                     android:ems="10"
-                    android:hint="Product Description"
+                    android:hint="Category Description"
                     android:inputType="text"
                     android:minHeight="48dp"
                     android:padding="10dp"
@@ -114,79 +133,12 @@
                     android:textColor="@color/black"
                     android:textColorHint="#5A5A5A" />
 
-                <!-- Price -->
-                <EditText
-                    android:id="@+id/editTextPrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_below="@id/editTextDescription"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="#2DCAB8B8"
-                    android:drawablePadding="20dp"
-                    android:ems="10"
-                    android:hint="Price"
-                    android:inputType="number"
-                    android:minHeight="48dp"
-                    android:padding="10dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="#5A5A5A" />
-
-                <!--  Category -->
-                <Spinner android:id="@+id/spinnerCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_below="@id/editTextPrice"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:drawablePadding="20dp"
-                    android:ems="10"
-                    android:contentDescription="Category"
-                    android:minHeight="48dp"
-                    android:padding="10dp"
-                    />
-
-                <!-- Quantity -->
-                <EditText
-                    android:id="@+id/editTextQuantity"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_below="@id/spinnerCategory"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="#2DCAB8B8"
-                    android:drawablePadding="20dp"
-                    android:ems="10"
-                    android:hint="Quantity"
-                    android:inputType="number"
-                    android:minHeight="48dp"
-                    android:padding="10dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="#5A5A5A" />
-
-                <!-- Status -->
-                <Spinner
-                    android:id="@+id/spinnerStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_below="@id/editTextQuantity"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:drawablePadding="20dp"
-                    android:ems="10"
-                    android:contentDescription="Status"
-                    android:minHeight="48dp"
-                    android:padding="10dp"
-                    />
-
                 <!-- Upload Images -->
                 <Button
-                    android:id="@+id/buttonUploadPImage"
+                    android:id="@+id/buttonUploadCImage"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:layout_below="@id/spinnerStatus"
+                    android:layout_below="@id/editTextCDescription"
                     android:text="Upload Image(s)"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
@@ -201,27 +153,27 @@
 
                 <!--ImageView to preview the selected image-->
                 <ImageView
-                    android:id="@+id/IVPreviewPImage"
+                    android:id="@+id/IVPreviewCImage"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:layout_below="@id/buttonUploadPImage"
+                    android:layout_below="@id/buttonUploadCImage"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp" />
 
                 <!-- Add Button -->
                 <Button
-                    android:id="@+id/btnAddProduct"
+                    android:id="@+id/btnAddCategory"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="10dip"
                     android:backgroundTint="#000000"
                     android:padding="10dp"
-                    android:text="Add Product"
+                    android:text="Add Category"
                     app:layout_constraintVertical_bias="0.173" />
 
             </LinearLayout>
-            <!-- Add Product Form Ends -->
+            <!-- Add Category Form Ends -->
 
         </RelativeLayout>
 
