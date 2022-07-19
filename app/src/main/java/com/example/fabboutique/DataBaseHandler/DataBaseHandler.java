@@ -23,7 +23,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public  static final String userCol4="FirstName";
     public  static final String userCol5="LastName";
     public  static final String userCol6="TelephoneNo";
-
+    public  static final String userCol7="UserType";
     //products category table fields
     public  static final String tableCategory="ProductsCategory";
     public  static final String categoryCol1="CategoryId";
@@ -33,7 +33,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public  static final String categoryCol5="CategoryImage";
 
     public  static final String CREATE_USER_TABLE="create table IF NOT EXISTS "+tableName+"("+userCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+userCol2+" TEXT NOT NULL,"+
-            userCol3+" PASSWORD NOT NULL,"+userCol4+" TEXT NOT NULL,"+userCol5+" TEXT NOT NULL,"+userCol6+" LONG NOT NULL);";
+            userCol3+" PASSWORD NOT NULL,"+userCol4+" TEXT NOT NULL,"+userCol5+" TEXT NOT NULL,"+userCol6+" LONG NOT NULL,"+userCol7+" TEXT NOT NULL);";
 
     public  static final String DROP_TABLE="DROP TABLE IF EXISTS "+tableName;
 
@@ -41,6 +41,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             categoryCol3+" TEXT NOT NULL,"+categoryCol4+" NUMBER NOT NULL,"+categoryCol5+" TEXT NOT NULL);";
 
     public  static final String DROP_CATEGORY_TABLE="DROP TABLE IF EXISTS "+tableCategory;
+
+    public static final String DROP_DB="DROP DATABASE "+dbName;
 
     public DataBaseHandler(@Nullable Context context) {
         super(context,dbName, null, version);
@@ -73,6 +75,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         contentValues.put(userCol4,user.getFirstName());
         contentValues.put(userCol5,user.getLastName());
         contentValues.put(userCol6,user.getTelephoneNo());
+        contentValues.put(userCol7,user.getUserType());
         //if data is not inserted following method will return -1
         long result = db.insert(tableName,null,contentValues);
 
@@ -123,7 +126,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
    public Cursor getAllCategory(String categoryStr)
     {
-        //Select Data By Course Code
+        //Select Data By category
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor;
