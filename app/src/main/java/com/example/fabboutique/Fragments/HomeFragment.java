@@ -15,8 +15,7 @@ import com.example.fabboutique.R;
 
 public class HomeFragment extends Fragment {
 
-LinearLayout linearLayoutTops ;
-    LinearLayout linearLayoutBottoms ;
+LinearLayout linearLayoutTops ,linearLayoutBottoms ,linearLayoutAll;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -34,12 +33,26 @@ LinearLayout linearLayoutTops ;
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
+        linearLayoutAll=(LinearLayout) view.findViewById(R.id.all);
+        linearLayoutAll.setOnClickListener(this::allonClick);
+
         linearLayoutTops=(LinearLayout) view.findViewById(R.id.tops);
         linearLayoutTops.setOnClickListener(this::topsonClick);
 
         linearLayoutBottoms=(LinearLayout) view.findViewById(R.id.bottoms);
         linearLayoutBottoms.setOnClickListener(this::bottomsOnClick);
         return view;
+    }
+
+    private void allonClick(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putString("category","all");
+        AllProductFragment fragment2 = new AllProductFragment();
+        fragment2.setArguments(bundle);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment2);
+        fragmentTransaction.commit();
     }
 
     public void topsonClick(View view) {

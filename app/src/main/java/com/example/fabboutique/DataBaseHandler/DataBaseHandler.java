@@ -160,6 +160,18 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor getProducts(String categoryStr) {
+        //Select Data By category
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor;
+        cursor=db.rawQuery("select * from "+tableCategory+" where "+categoryCol2+" = '"+categoryStr+"'",null);
+        if(cursor!=null)
+        {
+            cursor.moveToFirst();
+        }
+        return cursor;
     }
+}
 
 

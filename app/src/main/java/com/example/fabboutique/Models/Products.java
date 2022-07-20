@@ -2,19 +2,23 @@ package com.example.fabboutique.Models;
 
 public class Products {
 
-    Integer productid;
+    int productId;
     String productName;
-    String productQty;
-    String productPrice;
-    Integer imageUrl;
+    int productQty;
+    int productPrice;
+    int productImage;
 
-    public Products(Integer productid, String productName, String productQty, String productPrice, Integer imageUrl) {
+    public Products(int productid, String productName, int productQty, int productPrice, int imageUrl) {
 
-        this.productid = productid;
+        this.productId = productid;
         this.productName = productName;
         this.productQty = productQty;
         this.productPrice = productPrice;
-        this.imageUrl = imageUrl;
+        this.productImage = imageUrl;
+    }
+
+    public Products() {
+
     }
 
     public String getProductName() {
@@ -25,35 +29,35 @@ public class Products {
         this.productName = productName;
     }
 
-    public String getProductQty() {
+    public int getProductQty() {
         return productQty;
     }
 
-    public void setProductQty(String productQty) {
+    public void setProductQty(int productQty) {
         this.productQty = productQty;
     }
 
-    public String getProductPrice() {
+    public int getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(String productPrice) {
+    public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
 
-    public Integer getImageUrl() {
-        return imageUrl;
+    public int getProductImage() {
+        return this.productImage;
     }
 
-    public void setImageUrl(Integer imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setProductImage(int imageUrl) {
+        this.productImage = imageUrl;
     }
 
     public Integer getProductid() {
-        return productid;
+        return this.productId;
     }
 
     public void setProductid(Integer productid) {
-        this.productid = productid;
+        this.productId = productid;
     }
 }
