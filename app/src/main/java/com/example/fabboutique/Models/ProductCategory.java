@@ -5,10 +5,15 @@ public class ProductCategory {
     public int categoryImage;
 
     public ProductCategory()
-    {
+    {}
 
+    public ProductCategory(String categoryTitle, String categoryName, String categoryDescription) {
+        this.categoryTitle = categoryTitle;
+        this.categoryName = categoryName;
+        this.categoryDescription = categoryDescription;
     }
-    public ProductCategory(String categoryTitle,String categoryName,String categoryDescription,int categoryImage)
+
+    public ProductCategory(String categoryTitle, String categoryName, String categoryDescription, int categoryImage)
     {
         this.categoryDescription=categoryDescription;
         this.categoryImage=categoryImage;

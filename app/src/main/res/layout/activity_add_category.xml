@@ -87,7 +87,7 @@
                     android:background="#2DCAB8B8"
                     android:drawablePadding="20dp"
                     android:ems="10"
-                    android:hint="Category Name"
+                    android:hint="Sub-Category Name"
                     android:inputType="text"
                     android:minHeight="48dp"
                     android:padding="10dp"
@@ -95,31 +95,25 @@
                     android:textColor="@color/black"
                     android:textColorHint="#5A5A5A" />
 
-                <!-- Title -->
-                <EditText
-                    android:id="@+id/editTextCTitle"
+                <!-- Category Title -->
+                <Spinner android:id="@+id/spinnerCategoryTitle"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_below="@id/editTextCName"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:background="#2DCAB8B8"
                     android:drawablePadding="20dp"
                     android:ems="10"
-                    android:hint="Category Title"
-                    android:inputType="text"
+                    android:contentDescription="Category Name"
                     android:minHeight="48dp"
-                    android:padding="10dp"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textColorHint="#5A5A5A" />
+                    android:padding="10dp" />
 
                 <!-- Description -->
                 <EditText
                     android:id="@+id/editTextCDescription"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:layout_below="@id/editTextCTitle"
+                    android:layout_below="@id/spinnerCategoryTitle"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:background="#2DCAB8B8"
