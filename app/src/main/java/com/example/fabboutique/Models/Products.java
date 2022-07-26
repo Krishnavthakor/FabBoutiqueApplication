@@ -2,23 +2,24 @@ package com.example.fabboutique.Models;
 
 public class Products {
 
-    int productId;
-    String productName;
-    int productQty;
-    int productPrice;
-    int productImage;
+    public String productName, productDesc, productImage;
+    public int productId,productPrice, productQty;
 
-    public Products(int productid, String productName, int productQty, int productPrice, int imageUrl) {
+    public Products() {}
 
-        this.productId = productid;
+    public Products(String productName, String productDesc, int productPrice, int productQty) {
         this.productName = productName;
-        this.productQty = productQty;
+        this.productDesc = productDesc;
         this.productPrice = productPrice;
-        this.productImage = imageUrl;
+        this.productQty = productQty;
     }
 
-    public Products() {
-
+    public Products(String productName, String productDesc, int productPrice, int productQty, String productImage) {
+        this.productName = productName;
+        this.productDesc = productDesc;
+        this.productPrice = productPrice;
+        this.productQty = productQty;
+        this.productImage = productImage;
     }
 
     public String getProductName() {
@@ -27,6 +28,14 @@ public class Products {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getProductDesc() {
+        return productDesc;
+    }
+
+    public void setProductDesc(String productDesc) {
+        this.productDesc = productDesc;
     }
 
     public int getProductQty() {
@@ -45,11 +54,11 @@ public class Products {
         this.productPrice = productPrice;
     }
 
-    public int getProductImage() {
+    public String getProductImage() {
         return this.productImage;
     }
 
-    public void setProductImage(int imageUrl) {
+    public void setProductImage(String imageUrl) {
         this.productImage = imageUrl;
     }
 

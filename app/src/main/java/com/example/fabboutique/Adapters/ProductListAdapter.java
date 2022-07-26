@@ -24,7 +24,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         productArrayList = list;
     }
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView productName,productPrice;
+        TextView productName, productDesc, productPrice;
+
         ImageView productImage;
 
         public ViewHolder(@NonNull View itemView) {
@@ -48,8 +49,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public void onBindViewHolder(@NonNull ProductListAdapter.ViewHolder holder, int position) {
         Products product = productArrayList.get(position);
         holder.productName.setText(product.getProductName());
-        holder.productImage.setImageResource(product.getProductImage());
-        holder.productPrice.setText(product.getProductPrice());
+        holder.productImage.setImageResource(Integer.parseInt(product.getProductImage()));
+        String price = String.valueOf(product.getProductPrice());
+        holder.productPrice.setText(price);
     }
 
     @Override

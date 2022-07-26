@@ -25,7 +25,7 @@ public class AddCategory extends AppCompatActivity {
     private Button btnAddCategory, btnCategoryImage;
     EditText edtSubCategoryName, edtSubCategoryDesc;
     Spinner category;
-    String selectedCategoryName;
+    String selectedCategoryName, categoryImage;
 
     //creating database instance
     DataBaseHandler dbh;
@@ -109,7 +109,7 @@ public class AddCategory extends AppCompatActivity {
 
                 dbh=new DataBaseHandler(AddCategory.this  );
                 //inserting user to database
-                ProductCategory category = new ProductCategory( categoryName,subCategoryName,subCategoryDesc, 1);
+                ProductCategory category = new ProductCategory(categoryName,subCategoryName,subCategoryDesc, categoryImage);
 
                 boolean insertState = dbh.addProductsCategory(category);
 
@@ -147,6 +147,7 @@ public class AddCategory extends AppCompatActivity {
             if (requestCode == SELECT_PICTURE) {
                 // Get the url of the image from data
                 Uri selectedImageUri = data.getData();
+                categoryImage = selectedImageUri.toString();
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);

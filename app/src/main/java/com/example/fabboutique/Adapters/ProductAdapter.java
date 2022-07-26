@@ -39,10 +39,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull final ProductViewHolder holder, int position) {
 
-        holder.prodImage.setImageResource(productsList.get(position).getProductImage());
         holder.prodName.setText(productsList.get(position).getProductName());
-        holder.prodQty.setText(productsList.get(position).getProductQty());
-        holder.prodPrice.setText(productsList.get(position).getProductPrice());
+        String price = String.valueOf(productsList.get(position).getProductPrice());
+        holder.prodPrice.setText(price);
+        String qty = String.valueOf(productsList.get(position).getProductQty());
+        holder.prodQty.setText(qty);
+        holder.prodImage.setImageResource(Integer.parseInt(productsList.get(position).getProductImage()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,15 +69,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public static final class ProductViewHolder extends RecyclerView.ViewHolder{
 
         ImageView prodImage;
-        TextView prodName, prodQty, prodPrice;
+        TextView prodName, prodDesc, prodQty, prodPrice;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            prodImage = itemView.findViewById(R.id.prod_image);
             prodName = itemView.findViewById(R.id.prod_name);
             prodPrice = itemView.findViewById(R.id.prod_price);
             prodQty = itemView.findViewById(R.id.prod_qty);
+            prodImage = itemView.findViewById(R.id.prod_image);
 
 
         }

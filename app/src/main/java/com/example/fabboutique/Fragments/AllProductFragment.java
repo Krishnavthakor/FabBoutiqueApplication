@@ -76,7 +76,7 @@ public class AllProductFragment extends Fragment {
                     product.setProductid(cursor.getInt(1));
                     product.setProductName(cursor.getString(2));
                     product.setProductPrice(cursor.getInt(3));
-                    product.setProductImage(cursor.getInt(4));
+                    product.setProductImage(cursor.getString(4));
                     mList.add(product);
                 } while (cursor.moveToNext());
             }
