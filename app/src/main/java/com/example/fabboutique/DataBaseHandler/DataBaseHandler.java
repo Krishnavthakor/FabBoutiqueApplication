@@ -32,6 +32,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public  static final String categoryCol4="CategoryDescription";
     public  static final String categoryCol5="CategoryImage";
 
+    public  static final String tableProduct="Products";
+    public  static final String productCol1="ProductId";
+    public  static final String productCol2="ProductName";
+    public  static final String productCol3="ProductPrice";
+    public  static final String productCol4="ProductDescription";
+    public  static final String productCol5="ProductImage";
+    public  static final String productCol6="CategoryId";
+
     public  static final String CREATE_USER_TABLE="create table IF NOT EXISTS "+tableName+"("+userCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+userCol2+" TEXT NOT NULL,"+
             userCol3+" PASSWORD NOT NULL,"+userCol4+" TEXT NOT NULL,"+userCol5+" TEXT NOT NULL,"+userCol6+" LONG NOT NULL,"+userCol7+" TEXT NOT NULL);";
 
@@ -40,9 +48,13 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public  static final String CREATE_CATEGORY_TABLE="create table "+tableCategory+"("+categoryCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+categoryCol2+" TEXT NOT NULL,"+
             categoryCol3+" TEXT NOT NULL,"+categoryCol4+" NUMBER NOT NULL,"+categoryCol5+" TEXT NOT NULL);";
 
+    public  static final String CREATE_PRODUCTS_TABLE="create table "+tableProduct+"("+productCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+productCol2+" TEXT NOT NULL,"+
+            productCol3+" INTEGER NOT NULL,"+productCol4+" TEXT NOT NULL,"+productCol5+" TEXT NOT NULL,"+productCol6+" INTEGER NOT NULL,FOREIGN KEY("+productCol6+") REFERENCES "+tableCategory+"("+categoryCol1+"));";
+
     public  static final String DROP_CATEGORY_TABLE="DROP TABLE IF EXISTS "+tableCategory;
 
     public static final String DROP_DB="DROP DATABASE "+dbName;
+    private static final String DROP_PRODUCTS_TABLE ="DROP TABLE IF EXISTS "+tableProduct ;
 
     public DataBaseHandler(@Nullable Context context) {
         super(context,dbName, null, version);
@@ -53,12 +65,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_CATEGORY_TABLE);
+        db.execSQL(CREATE_PRODUCTS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(DROP_TABLE);
         db.execSQL(DROP_CATEGORY_TABLE);
+        db.execSQL(DROP_PRODUCTS_TABLE);
         onCreate(db);
     }
 
@@ -137,6 +151,19 @@ public class DataBaseHandler extends SQLiteOpenHelper {
        }
         return cursor;
     }
+    public Cursor getCategoryByName(String categoryStr)
+    {
+        //Select Data By category
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor;
+        cursor=db.rawQuery("select * from "+tableCategory+" where "+categoryCol3+" = '"+categoryStr+"'",null);
+        if(cursor!=null)
+        {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
 
     public boolean insertCategory(ProductCategory category) {
         //instanse of SQLLITE Database
@@ -160,12 +187,24 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getProducts(String categoryStr) {
+    public Cursor getProducts(int categoryId) {
         //Select Data By category
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor;
-        cursor=db.rawQuery("select * from "+tableCategory+" where "+categoryCol2+" = '"+categoryStr+"'",null);
+        cursor=db.rawQuery("select * from "+tableProduct+" where "+categoryCol2+" = '"+categoryId+"'",null);
+        if(cursor!=null)
+        {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor getAllProducts() {
+        //Select Data By category
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor;
+        cursor=db.rawQuery("select * from "+tableProduct,null);
         if(cursor!=null)
         {
             cursor.moveToFirst();

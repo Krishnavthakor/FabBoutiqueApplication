@@ -47,7 +47,7 @@ public class AllProductFragment extends Fragment {
         //fetching arguements data from previous fragment
         Bundle bundle = this.getArguments();
 
-        if(bundle != null){
+        if (bundle != null) {
             categoryStr = (String) bundle.get("category");
         }
 
@@ -61,32 +61,55 @@ public class AllProductFragment extends Fragment {
         //binding widgets and initializing objects
         mrecyclerview = view.findViewById(R.id.recyclerView);
 
-        //cursor for fetching data from database
-        Cursor cursor = dbh.getProducts(categoryStr);
-        if (cursor == null) {
-            Toast.makeText(getActivity(), "No Record Found", Toast.LENGTH_LONG).show();
-            return view;
-        } else {
-            Toast.makeText(getActivity(), "Record Found", Toast.LENGTH_LONG).show();
-            //if found data then check in recipe table and display it with recylcer view.
-            if (cursor.moveToFirst()) {
-                do {
-                    //initialize recipe class and set data and store object to arraylist
-                    Products product = new Products();
-                    product.setProductid(cursor.getInt(1));
-                    product.setProductName(cursor.getString(2));
-                    product.setProductPrice(cursor.getInt(3));
-                    product.setProductImage(cursor.getInt(4));
-                    mList.add(product);
-                } while (cursor.moveToNext());
-            }
-            cursor.close();
-            dbh.close();
-            bindAdapter();
-            return view;
+        int categoryId = 0;
+        Cursor cursor1;
+        if(categoryStr.equals("all"))
+        {
+            cursor1=dbh.getAllProducts();
         }
+        else {
+            cursor1 = dbh.getCategoryByName(categoryStr);
+            if (cursor1 == null) {
+                Toast.makeText(getActivity(), "No Record Found", Toast.LENGTH_LONG).show();
+                return view;
+            } else {
+                Toast.makeText(getActivity(), "Record Found", Toast.LENGTH_LONG).show();
+                //if found data then check in recipe table and display it with recylcer view.
+                if (cursor1.moveToFirst()) {
+                    Products product = new Products();
+                    product.setCategoryId(cursor1.getInt(1));
+                    categoryId = product.getCategoryId();
+                    mList.add(product);
+                }
+                cursor1.close();
+                //cursor for fetching data from database
+                Cursor cursor = dbh.getProducts(categoryId);
+                if (cursor == null) {
+                    Toast.makeText(getActivity(), "No Record Found", Toast.LENGTH_LONG).show();
+                    return view;
+                } else {
+                    Toast.makeText(getActivity(), "Record Found", Toast.LENGTH_LONG).show();
+                    //if found data then check in recipe table and display it with recylcer view.
+                    if (cursor.moveToFirst()) {
+                        do {
+                            //initialize recipe class and set data and store object to arraylist
+                            Products product = new Products();
+                            product.setProductid(cursor.getInt(1));
+                            product.setProductName(cursor.getString(2));
+                            product.setProductPrice(cursor.getInt(3));
+                            product.setProductImage(cursor.getInt(4));
+                            mList.add(product);
+                        } while (cursor.moveToNext());
+                    }
+                    cursor.close();
+                    dbh.close();
+                    bindAdapter();
+                }
 
-}
+            }
+        }
+        return view;
+    }
 
     private void bindAdapter() {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());

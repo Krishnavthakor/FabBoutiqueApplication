@@ -27,11 +27,8 @@ public class TopsFragment extends Fragment {
     private List<ProductCategory> mList=new ArrayList<>();
     private ProductCategoryListAdapter categoryListAdapter;
     DataBaseHandler dbh;
-    String categoryStr;
+    private String categoryStr;
     private ArrayList<ProductCategory> topsArrayList;
-
-
-
 
     public TopsFragment()
     {
@@ -65,8 +62,9 @@ public class TopsFragment extends Fragment {
         //binding widgets and initializing objects
         mrecyclerview = view.findViewById(R.id.recyclerView);
 
+        Toast.makeText(getActivity().getApplicationContext(), categoryStr.toString(),Toast.LENGTH_LONG).show();
         //cursor for fetching data from database
-        Cursor cursor = dbh.getAllCategory(categoryStr);
+       /* Cursor cursor = dbh.getAllCategory(categoryStr);
         if (cursor == null) {
             Toast.makeText(getActivity(), "No Record Found", Toast.LENGTH_LONG).show();
             return view;
@@ -86,9 +84,8 @@ public class TopsFragment extends Fragment {
             }
             cursor.close();
             dbh.close();
-            bindAdapter();
-            return view;
-        }
+            //bindAdapter();*/
+         return view;
     }
 
     private void bindAdapter() {
