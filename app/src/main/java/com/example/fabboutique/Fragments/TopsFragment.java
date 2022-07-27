@@ -1,6 +1,8 @@
 package com.example.fabboutique.Fragments;
 
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,7 +82,11 @@ public class TopsFragment extends Fragment {
                     category.setCategoryName(cursor.getString(2));
                     category.setCategoryTitle(cursor.getString(1));
                     category.setCategoryDescription(cursor.getString(3));
-                    //category.setCategoryImage(cursor.getInt(4));
+                    //Get Image from db
+                    byte[] imageBytes = cursor.getBlob(4);
+                    Bitmap objectBitmap = BitmapFactory.decodeByteArray(imageBytes,0, imageBytes.length);
+                    category.setCategoryImage(objectBitmap);
+
                     mList.add(category);
                 } while (cursor.moveToNext());
             }

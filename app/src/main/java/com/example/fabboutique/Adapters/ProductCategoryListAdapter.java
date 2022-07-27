@@ -48,7 +48,7 @@ public class ProductCategoryListAdapter extends RecyclerView.Adapter<ProductCate
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ProductCategory category = categoryArrayList.get(position);
         holder.categoryName.setText(category.getCategoryName());
-        //holder.categoryImage.setImageResource(category.getCategoryImage());
+        holder.categoryImage.setImageBitmap(category.getCategoryImage());
     }
 
 
