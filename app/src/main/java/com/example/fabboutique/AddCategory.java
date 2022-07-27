@@ -29,7 +29,6 @@ public class AddCategory extends AppCompatActivity {
     EditText edtSubCategoryName, edtSubCategoryDesc;
     Spinner category;
     String selectedCategoryName;
-    int categoryImage;
 
     //creating database instance
     DataBaseHandler dbh;
@@ -39,10 +38,6 @@ public class AddCategory extends AppCompatActivity {
     private Bitmap imageToStore;
     private Uri imageFilePath;
     private static final int Pick_Image_Request=100;
-
-    // constant to compare
-    // the activity result code
-    int SELECT_PICTURE = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,8 +137,6 @@ public class AddCategory extends AppCompatActivity {
         }catch (Exception e) {
             Toast.makeText(AddCategory.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
-
-
     }
 
     // this function is triggered when user

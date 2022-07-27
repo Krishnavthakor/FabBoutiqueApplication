@@ -1,6 +1,8 @@
 package com.example.fabboutique.Fragments;
 
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -84,7 +86,11 @@ public class AllProductFragment extends Fragment {
                         product.setProductDesc(cursor1.getString(2));
                         product.setProductPrice(cursor1.getInt(3));
                         product.setProductQty(cursor1.getInt(4));
-                        product.setProductImage(cursor1.getInt(5));
+
+                        //Get Image from db
+                        byte[] imageBytes = cursor1.getBlob(5);
+                        Bitmap objectBitmap = BitmapFactory.decodeByteArray(imageBytes,0, imageBytes.length);
+                        product.setProductImage(objectBitmap);
                         product.setCategoryId(cursor1.getInt(6));
                         mList.add(product);
                     } while (cursor1.moveToNext());

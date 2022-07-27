@@ -3,8 +3,10 @@ package com.example.fabboutique;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,10 +28,13 @@ public class AddProduct extends AppCompatActivity {
     Spinner spCategory, spProductStatus;
     String selectedCategoryName;
     String selectedProductStatus;
-    int productImage;
+    Bitmap productImage;
     ImageView IVPreviewImage; // One Preview Image
     DataBaseHandler dbh; //creating database instance
-    int SELECT_PICTURE = 200; // constant to compare // the activity result code
+
+    private Bitmap imageToStore;
+    private Uri imageFilePath;
+    private static final int Pick_Image_Request=100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +139,7 @@ public class AddProduct extends AppCompatActivity {
 
                 dbh=new DataBaseHandler(AddProduct.this);
                 //inserting Product to database
-                Products products = new Products(productName,productDesc, price, quantity, productImage, 1);
+                Products products = new Products(productName,productDesc, price, quantity, imageToStore, 1);
                 boolean insertState = dbh.addProduct(products);
 
                 if (insertState) {
@@ -165,32 +170,30 @@ public class AddProduct extends AppCompatActivity {
     void imageChooser() {
         // create an instance of the
         // intent of the type image
-        Intent i = new Intent();
-        i.setType("image/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
+        try {
+            Intent i = new Intent();
+            i.setType("image/*");
+            i.setAction(Intent.ACTION_GET_CONTENT);
 
-        // pass the constant to compare it
-        // with the returned requestCode
-        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+            startActivityForResult(i, Pick_Image_Request);
+        }catch (Exception e) {
+            Toast.makeText(AddProduct.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     // this function is triggered when user
     // selects the image from the imageChooser
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-            // compare the resultCode with the
-            // SELECT_PICTURE constant
-            if (requestCode == SELECT_PICTURE) {
-                // Get the url of the image from data
-                Uri selectedImageUri = data.getData();
-                if (null != selectedImageUri) {
-                    productImage =Integer.parseInt( selectedImageUri.toString());
-                    // update the preview image in the layout
-                    IVPreviewImage.setImageURI(selectedImageUri);
-                }
+        try {
+            if (requestCode == Pick_Image_Request && resultCode==RESULT_OK && data!=null && data.getData()!=null)
+            {
+                imageFilePath=data.getData();
+                imageToStore= MediaStore.Images.Media.getBitmap(getContentResolver(),imageFilePath);
+                IVPreviewImage.setImageBitmap(imageToStore);
             }
+        }catch (Exception e) {
+            Toast.makeText(AddProduct.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

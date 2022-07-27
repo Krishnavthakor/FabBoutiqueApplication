@@ -1,9 +1,11 @@
 package com.example.fabboutique.Models;
 
+import android.graphics.Bitmap;
+
 public class Products {
 
     public String productName, productDesc;
-    int productImage;
+    Bitmap productImage;
     public int categoryId, productId,productPrice, productQty;
 
     public Products() {}
@@ -15,7 +17,7 @@ public class Products {
         this.productQty = productQty;
     }
 
-    public Products(String productName, String productDesc, int productPrice, int productQty, int productImage, int categoryId) {
+    public Products(String productName, String productDesc, int productPrice, int productQty, Bitmap productImage, int categoryId) {
         this.productName = productName;
         this.productDesc = productDesc;
         this.productPrice = productPrice;
@@ -64,11 +66,11 @@ public class Products {
         this.productPrice = productPrice;
     }
 
-    public int getProductImage() {
+    public Bitmap getProductImage() {
         return this.productImage;
     }
 
-    public void setProductImage(int imageUrl) {
+    public void setProductImage(Bitmap imageUrl) {
         this.productImage = imageUrl;
     }
 

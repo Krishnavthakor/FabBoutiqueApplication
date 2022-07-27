@@ -82,7 +82,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
 
     public  static final String CREATE_PRODUCT_TABLE="create table IF NOT EXISTS "+tableProduct+"("+productCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+productCol2+" TEXT NOT NULL,"+
-            productCol3+" TEXT NOT NULL,"+productCol4+" INTEGER NOT NULL,"+productCol5+" INTEGER NOT NULL,"+productCol6+" TEXT NOT NULL, "+productCol7+" INTEGER NOT NULL,FOREIGN KEY("+productCol7+") REFERENCES "+tableCategory+"("+categoryCol1+"));";
+            productCol3+" TEXT NOT NULL,"+productCol4+" INTEGER NOT NULL,"+productCol5+" INTEGER NOT NULL,"+productCol6+" BLOB NOT NULL, "+productCol7+" INTEGER NOT NULL,FOREIGN KEY("+productCol7+") REFERENCES "+tableCategory+"("+categoryCol1+"));";
 
 
     public  static final String CREATE_ADDRESS_TABLE="create table IF NOT EXISTS "+tableAddress+"("+addressCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+addressCol2+" INTEGER NOT NULL,"+
@@ -200,7 +200,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         contentValues.put(productCol3,product.productDesc);
         contentValues.put(productCol4,product.productPrice);
         contentValues.put(productCol5,product.productQty);
-        contentValues.put(productCol6,product.getProductImage());
+
+        //storing image in to db
+        Bitmap imageToStoreBitmap=product.getProductImage();
+        objectByteArrayOutputStream=new ByteArrayOutputStream();
+        imageToStoreBitmap.compress(Bitmap.CompressFormat.JPEG,100,objectByteArrayOutputStream);
+        imageInBytes=objectByteArrayOutputStream.toByteArray();
+        contentValues.put(productCol6,imageInBytes);
+
         contentValues.put(productCol7,product.categoryId);
 
         //if data is not inserted following method will return -1
