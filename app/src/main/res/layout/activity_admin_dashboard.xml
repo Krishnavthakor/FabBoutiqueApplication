@@ -76,7 +76,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Manage Customers"
+            android:text="Manage Category"
             android:textSize="14sp"
             app:layout_constraintVertical_bias="0.173" />
 
@@ -96,7 +96,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Manage Inventory"
+            android:text="Manage Inventory Products"
             android:textSize="14sp"
             app:layout_constraintVertical_bias="0.173" />
 

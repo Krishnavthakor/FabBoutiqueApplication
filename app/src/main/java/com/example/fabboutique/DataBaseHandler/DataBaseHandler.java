@@ -42,22 +42,65 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public  static final String productCol6="ProductImage";
     public  static final String productCol7="CategoryId";
 
+    //wishlist table fields
+    public  static final String tableWishlist="Wishlists";
+    public  static final String wishlistCol1="WishlistId";
+    public  static final String wishlistCol2="ProductId";
+    public  static final String wishlistCol3="UserId";
+
+    //cart table fields
+    public  static final String tableCart="Cart";
+    public  static final String cartCol1="CartId";
+    public  static final String cartCol2="ProductId";
+    public  static final String cartCol3="UserId";
+    public  static final String cartCol4="Quantity";
+
+    //address table field
+    public  static final String tableAddress="UserAddress";
+    public  static final String addressCol1="AddressId";
+    public  static final String addressCol2="UserId";
+    public  static final String addressCol3="AddressLine1";
+    public  static final String addressCol4="AddressLine2";
+    public  static final String addressCol5="City";
+    public  static final String addressCol6="PostalCode";
+    public  static final String addressCol7="Province";
+    public  static final String addressCol8="Country";
+    public  static final String addressCol9="MobileNo";
+
+
+    //all database tables query
     public  static final String CREATE_USER_TABLE="create table IF NOT EXISTS "+tableName+"("+userCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+userCol2+" TEXT NOT NULL,"+
             userCol3+" PASSWORD NOT NULL,"+userCol4+" TEXT NOT NULL,"+userCol5+" TEXT NOT NULL,"+userCol6+" LONG NOT NULL,"+userCol7+" TEXT NOT NULL);";
 
-    public  static final String DROP_TABLE="DROP TABLE IF EXISTS "+tableName;
 
     public  static final String CREATE_CATEGORY_TABLE="create table "+tableCategory+"("+categoryCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+categoryCol2+" TEXT NOT NULL,"+
             categoryCol3+" TEXT NOT NULL,"+categoryCol4+" NUMBER NOT NULL,"+categoryCol5+" TEXT NOT NULL);";
 
-    public  static final String DROP_CATEGORY_TABLE="DROP TABLE IF EXISTS "+tableCategory;
+
 
     public  static final String CREATE_PRODUCT_TABLE="create table IF NOT EXISTS "+tableProduct+"("+productCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+productCol2+" TEXT NOT NULL,"+
             productCol3+" TEXT NOT NULL,"+productCol4+" INTEGER NOT NULL,"+productCol5+" INTEGER NOT NULL,"+productCol6+" TEXT NOT NULL, "+productCol7+" INTEGER NOT NULL,FOREIGN KEY("+productCol7+") REFERENCES "+tableCategory+"("+categoryCol1+"));";
 
-    public  static final String DROP_PRODUCT_TABLE="DROP TABLE IF EXISTS "+tableProduct;
 
+    public  static final String CREATE_ADDRESS_TABLE="create table IF NOT EXISTS "+tableAddress+"("+addressCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+addressCol2+" INTEGER NOT NULL,"+
+            addressCol3+" TEXT NOT NULL,"+addressCol4+" TEXT NOT NULL,"+addressCol5+" TEXT NOT NULL,"+addressCol6+" TEXT NOT NULL, "+addressCol7+" TEXT NOT NULL,"+addressCol8+" TEXT NOT NULL,"+addressCol9+" LONG NOT NULL,FOREIGN KEY("+addressCol2+") REFERENCES "+tableName+"("+userCol1+"));";
+
+
+    public  static final String CREATE_WISHLIST_TABLE="create table IF NOT EXISTS "+tableWishlist+"("+wishlistCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+wishlistCol2+" INTEGER NOT NULL,"+wishlistCol3+" INTEGER NOT NULL," +
+            "FOREIGN KEY("+wishlistCol2+") REFERENCES "+tableProduct+"("+productCol1+"),FOREIGN KEY("+wishlistCol3+") REFERENCES "+tableName+"("+userCol1+"));";
+
+    public  static final String CREATE_CART_TABLE="create table IF NOT EXISTS "+tableCart+"("+cartCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+cartCol2+" INTEGER NOT NULL,"+cartCol3+" INTEGER NOT NULL,"+cartCol4+" INTEGER NOT NULL," +
+            "FOREIGN KEY("+cartCol2+") REFERENCES "+tableProduct+"("+productCol1+"),FOREIGN KEY("+cartCol3+") REFERENCES "+tableName+"("+userCol1+"));";
+
+    //drop table query attributes
+    public  static final String DROP_PRODUCT_TABLE="DROP TABLE IF EXISTS "+tableProduct;
+    public  static final String DROP_TABLE="DROP TABLE IF EXISTS "+tableName;
+    public  static final String DROP_CATEGORY_TABLE="DROP TABLE IF EXISTS "+tableCategory;
     public static final String DROP_DB="DROP DATABASE "+dbName;
+    public  static final String DROP_WISHLIST_TABLE="DROP TABLE IF EXISTS "+tableWishlist;
+    public  static final String DROP_CART_TABLE="DROP TABLE IF EXISTS "+tableCart;
+    public  static final String DROP_ADDRESS_TABLE="DROP TABLE IF EXISTS "+tableAddress;
+
 
     public DataBaseHandler(@Nullable Context context) {
         super(context,dbName, null, version);
@@ -69,6 +112,9 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_CATEGORY_TABLE);
         db.execSQL(CREATE_PRODUCT_TABLE);
+        db.execSQL(CREATE_WISHLIST_TABLE);
+        db.execSQL(CREATE_CART_TABLE);
+        db.execSQL(CREATE_ADDRESS_TABLE);
     }
 
     @Override
@@ -76,6 +122,9 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.execSQL(DROP_TABLE);
         db.execSQL(DROP_CATEGORY_TABLE);
         db.execSQL(DROP_PRODUCT_TABLE);
+        db.execSQL(DROP_CART_TABLE);
+        db.execSQL(DROP_WISHLIST_TABLE);
+        db.execSQL(DROP_ADDRESS_TABLE);
         onCreate(db);
     }
 
@@ -115,7 +164,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         contentValues.put(categoryCol2,category.categoryTitle);
         contentValues.put(categoryCol3,category.categoryName);
         contentValues.put(categoryCol4,category.categoryDescription);
-        contentValues.put(categoryCol5,category.categoryImage);
+        contentValues.put(categoryCol5,category.getCategoryImage());
 
         //if data is not inserted following method will return -1
         long result = db.insert(tableCategory,null,contentValues);
@@ -138,7 +187,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         contentValues.put(productCol3,product.productDesc);
         contentValues.put(productCol4,product.productPrice);
         contentValues.put(productCol5,product.productQty);
-        contentValues.put(productCol6,product.productImage);
+        contentValues.put(productCol6,product.getProductImage());
         contentValues.put(productCol7,product.categoryId);
 
         //if data is not inserted following method will return -1

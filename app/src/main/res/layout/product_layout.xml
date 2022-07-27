@@ -25,33 +25,29 @@
             android:layout_weight="1"
             android:scaleType="fitXY" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
         <TextView
             android:id="@+id/productName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:fontFamily="@font/aladin"
+            android:fontFamily="sans-serif-medium"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"></TextView>
+
         <TextView
             android:id="@+id/productPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:fontFamily="@font/aladin"
+            android:fontFamily="sans-serif-medium"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold"></TextView>
-    </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

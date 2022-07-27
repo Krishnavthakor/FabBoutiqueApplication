@@ -1,7 +1,8 @@
 package com.example.fabboutique.Models;
 
 public class ProductCategory {
-    public String categoryTitle,categoryName,categoryDescription, categoryImage;
+    public String categoryTitle,categoryName,categoryDescription;
+    int categoryImage;
 
     public ProductCategory()
     {}
@@ -12,7 +13,7 @@ public class ProductCategory {
         this.categoryDescription = categoryDescription;
     }
 
-    public ProductCategory(String categoryTitle, String categoryName, String categoryDescription, String categoryImage)
+    public ProductCategory(String categoryTitle, String categoryName, String categoryDescription, int categoryImage)
     {
         this.categoryDescription=categoryDescription;
         this.categoryImage=categoryImage;
@@ -23,7 +24,7 @@ public class ProductCategory {
         return this.categoryDescription;
     }
 
-    public String getCategoryImage() {
+    public int getCategoryImage() {
         return this.categoryImage;
     }
 
@@ -40,7 +41,7 @@ public class ProductCategory {
          this.categoryDescription=categoryDescription;
     }
 
-    public void setCategoryImage(String categoryImage) {
+    public void setCategoryImage(int categoryImage) {
          this.categoryImage=categoryImage;
     }
 

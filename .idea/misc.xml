@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/activity_add_category.xml" value="0.1" />
+        <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.264" />
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/activity_main.xml" value="0.12158054711246201" />
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/activity_productdetails.xml" value="0.25" />
@@ -13,7 +14,7 @@
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/category_layout.xml" value="0.25" />
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/category_row_item.xml" value="0.25" />
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/fragment_product_details.xml" value="0.264" />
+        <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/fragment_product_details.xml" value="0.1" />
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/fragment_tops.xml" value="0.25" />
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/list_item.xml" value="0.25" />
         <entry key="..\:/MSD_SEM_4/Capstone Project Team 14/FabBoutiqueApplication/app/src/main/res/layout/product_activity_main.xml" value="0.25" />

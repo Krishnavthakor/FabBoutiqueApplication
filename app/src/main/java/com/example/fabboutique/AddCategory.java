@@ -25,7 +25,8 @@ public class AddCategory extends AppCompatActivity {
     private Button btnAddCategory, btnCategoryImage;
     EditText edtSubCategoryName, edtSubCategoryDesc;
     Spinner category;
-    String selectedCategoryName, categoryImage;
+    String selectedCategoryName;
+    int categoryImage;
 
     //creating database instance
     DataBaseHandler dbh;
@@ -148,7 +149,7 @@ public class AddCategory extends AppCompatActivity {
                 // Get the url of the image from data
                 Uri selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
-                    categoryImage = selectedImageUri.toString();
+                    categoryImage = Integer.parseInt(selectedImageUri.toString());
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);
                 }

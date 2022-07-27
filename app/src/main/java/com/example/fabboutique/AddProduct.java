@@ -24,7 +24,9 @@ public class AddProduct extends AppCompatActivity {
     private Button btnAddProduct, btnProductImage;
     EditText edtProductName, edtProductDesc, edtProductPrice, edtProductQuantity;
     Spinner spCategory, spProductStatus;
-    String selectedCategoryName, selectedProductStatus, productImage;
+    String selectedCategoryName;
+    String selectedProductStatus;
+    int productImage;
     ImageView IVPreviewImage; // One Preview Image
     DataBaseHandler dbh; //creating database instance
     int SELECT_PICTURE = 200; // constant to compare // the activity result code
@@ -184,7 +186,7 @@ public class AddProduct extends AppCompatActivity {
                 // Get the url of the image from data
                 Uri selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
-                    productImage = selectedImageUri.toString();
+                    productImage =Integer.parseInt( selectedImageUri.toString());
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);
                 }

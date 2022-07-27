@@ -26,7 +26,7 @@ public class AdminDashboard extends AppCompatActivity {
         btnManageCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminDashboard.this, ManageCustomers.class);
+                Intent intent = new Intent(AdminDashboard.this, AddCategory.class);
                 AdminDashboard.this.startActivity(intent);
             }
         });
@@ -35,7 +35,7 @@ public class AdminDashboard extends AppCompatActivity {
         btnManageInventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminDashboard.this, ManageInventory.class);
+                Intent intent = new Intent(AdminDashboard.this, AddProduct.class);
                 AdminDashboard.this.startActivity(intent);
             }
         });

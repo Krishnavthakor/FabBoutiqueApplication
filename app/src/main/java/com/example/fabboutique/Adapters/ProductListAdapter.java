@@ -48,8 +48,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public void onBindViewHolder(@NonNull ProductListAdapter.ViewHolder holder, int position) {
         Products product = productArrayList.get(position);
         holder.productName.setText(product.getProductName());
-        holder.productImage.setImageResource(Integer.parseInt(product.getProductImage()));
-        holder.productPrice.setText(product.getProductPrice());
+       // holder.productImage.setImageResource(product.getProductImage());
+        holder.productPrice.setText(product.getProductDesc());
     }
 
     @Override

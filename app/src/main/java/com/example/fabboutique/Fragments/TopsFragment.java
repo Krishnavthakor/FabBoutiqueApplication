@@ -27,7 +27,7 @@ public class TopsFragment extends Fragment {
     private List<ProductCategory> mList=new ArrayList<>();
     private ProductCategoryListAdapter categoryListAdapter;
     DataBaseHandler dbh;
-    private String categoryStr;
+    private String categoryStr="";
     private ArrayList<ProductCategory> topsArrayList;
 
     public TopsFragment()
@@ -48,7 +48,7 @@ public class TopsFragment extends Fragment {
         //fetching arguements data from previous fragment
         Bundle bundle = this.getArguments();
 
-        if(bundle != null){
+        if (bundle != null) {
             categoryStr = (String) bundle.get("category");
         }
 
@@ -62,9 +62,11 @@ public class TopsFragment extends Fragment {
         //binding widgets and initializing objects
         mrecyclerview = view.findViewById(R.id.recyclerView);
 
-        Toast.makeText(getActivity().getApplicationContext(), categoryStr.toString(),Toast.LENGTH_LONG).show();
+        dbh=new DataBaseHandler(getActivity().getApplicationContext());
+
+        Toast.makeText(getActivity().getApplicationContext(), categoryStr.toString(), Toast.LENGTH_LONG).show();
         //cursor for fetching data from database
-       /* Cursor cursor = dbh.getAllCategory(categoryStr);
+        Cursor cursor = dbh.getAllCategory(categoryStr);
         if (cursor == null) {
             Toast.makeText(getActivity(), "No Record Found", Toast.LENGTH_LONG).show();
             return view;
@@ -75,8 +77,8 @@ public class TopsFragment extends Fragment {
                 do {
                     //initialize recipe class and set data and store object to arraylist
                     ProductCategory category = new ProductCategory();
-                    category.setCategoryName(cursor.getString(1));
-                    category.setCategoryTitle(cursor.getString(2));
+                    category.setCategoryName(cursor.getString(2));
+                    category.setCategoryTitle(cursor.getString(1));
                     category.setCategoryDescription(cursor.getString(3));
                     category.setCategoryImage(cursor.getInt(4));
                     mList.add(category);
@@ -84,8 +86,9 @@ public class TopsFragment extends Fragment {
             }
             cursor.close();
             dbh.close();
-            //bindAdapter();*/
-         return view;
+            bindAdapter();
+            return view;
+        }
     }
 
     private void bindAdapter() {
