@@ -147,8 +147,8 @@ public class AddCategory extends AppCompatActivity {
             if (requestCode == SELECT_PICTURE) {
                 // Get the url of the image from data
                 Uri selectedImageUri = data.getData();
-                categoryImage = selectedImageUri.toString();
                 if (null != selectedImageUri) {
+                    categoryImage = selectedImageUri.toString();
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);
                 }

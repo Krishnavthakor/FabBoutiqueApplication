@@ -3,7 +3,6 @@ package com.example.fabboutique;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.fabboutique.DataBaseHandler.DataBaseHandler;
-import com.example.fabboutique.Models.ProductCategory;
 import com.example.fabboutique.Models.Products;
 
 import java.util.ArrayList;
@@ -134,7 +132,7 @@ public class AddProduct extends AppCompatActivity {
 
                 dbh=new DataBaseHandler(AddProduct.this);
                 //inserting Product to database
-                Products products = new Products(productName,productDesc, price, quantity, productImage);
+                Products products = new Products(productName,productDesc, price, quantity, productImage, 1);
                 boolean insertState = dbh.addProduct(products);
 
                 if (insertState) {
@@ -185,8 +183,8 @@ public class AddProduct extends AppCompatActivity {
             if (requestCode == SELECT_PICTURE) {
                 // Get the url of the image from data
                 Uri selectedImageUri = data.getData();
-                productImage = selectedImageUri.toString();
                 if (null != selectedImageUri) {
+                    productImage = selectedImageUri.toString();
                     // update the preview image in the layout
                     IVPreviewImage.setImageURI(selectedImageUri);
                 }

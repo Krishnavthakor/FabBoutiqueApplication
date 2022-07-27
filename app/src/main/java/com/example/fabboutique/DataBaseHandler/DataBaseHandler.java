@@ -48,20 +48,16 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public  static final String DROP_TABLE="DROP TABLE IF EXISTS "+tableName;
 
     public  static final String CREATE_CATEGORY_TABLE="create table "+tableCategory+"("+categoryCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+categoryCol2+" TEXT NOT NULL,"+
-            categoryCol3+" TEXT NOT NULL,"+categoryCol4+" TEXT NOT NULL,"+categoryCol5+" TEXT NOT NULL);";
-
-    public  static final String CREATE_PRODUCTS_TABLE="create table "+tableProduct+"("+productCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+productCol2+" TEXT NOT NULL,"+
-            productCol3+" INTEGER NOT NULL,"+productCol4+" TEXT NOT NULL,"+productCol5+" TEXT NOT NULL,"+productCol6+" INTEGER NOT NULL,FOREIGN KEY("+productCol6+") REFERENCES "+tableCategory+"("+categoryCol1+"));";
+            categoryCol3+" TEXT NOT NULL,"+categoryCol4+" NUMBER NOT NULL,"+categoryCol5+" TEXT NOT NULL);";
 
     public  static final String DROP_CATEGORY_TABLE="DROP TABLE IF EXISTS "+tableCategory;
 
     public  static final String CREATE_PRODUCT_TABLE="create table IF NOT EXISTS "+tableProduct+"("+productCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+productCol2+" TEXT NOT NULL,"+
-            productCol3+" TEXT NOT NULL,"+productCol4+" INTEGER NOT NULL,"+productCol5+" INTEGER NOT NULL,"+productCol6+" TEXT NOT NULL);";
+            productCol3+" TEXT NOT NULL,"+productCol4+" INTEGER NOT NULL,"+productCol5+" INTEGER NOT NULL,"+productCol6+" TEXT NOT NULL, "+productCol7+" INTEGER NOT NULL,FOREIGN KEY("+productCol7+") REFERENCES "+tableCategory+"("+categoryCol1+"));";
 
     public  static final String DROP_PRODUCT_TABLE="DROP TABLE IF EXISTS "+tableProduct;
 
     public static final String DROP_DB="DROP DATABASE "+dbName;
-    private static final String DROP_PRODUCTS_TABLE ="DROP TABLE IF EXISTS "+tableProduct ;
 
     public DataBaseHandler(@Nullable Context context) {
         super(context,dbName, null, version);
@@ -73,7 +69,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_CATEGORY_TABLE);
         db.execSQL(CREATE_PRODUCT_TABLE);
-        db.execSQL(CREATE_PRODUCTS_TABLE);
     }
 
     @Override
@@ -81,7 +76,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.execSQL(DROP_TABLE);
         db.execSQL(DROP_CATEGORY_TABLE);
         db.execSQL(DROP_PRODUCT_TABLE);
-        db.execSQL(DROP_PRODUCTS_TABLE);
         onCreate(db);
     }
 
@@ -145,6 +139,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         contentValues.put(productCol4,product.productPrice);
         contentValues.put(productCol5,product.productQty);
         contentValues.put(productCol6,product.productImage);
+        contentValues.put(productCol7,product.categoryId);
 
         //if data is not inserted following method will return -1
         long result = db.insert(tableProduct,null,contentValues);
@@ -231,6 +226,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
     public Cursor getAllProducts() {
         //Select Data By category
         SQLiteDatabase db = this.getWritableDatabase();

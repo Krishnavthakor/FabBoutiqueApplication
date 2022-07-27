@@ -78,7 +78,7 @@ public class TopsFragment extends Fragment {
                     category.setCategoryName(cursor.getString(1));
                     category.setCategoryTitle(cursor.getString(2));
                     category.setCategoryDescription(cursor.getString(3));
-                    category.setCategoryImage(cursor.getString(4));
+                    category.setCategoryImage(cursor.getInt(4));
                     mList.add(category);
                 } while (cursor.moveToNext());
             }
