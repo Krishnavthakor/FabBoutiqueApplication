@@ -3,8 +3,10 @@ package com.example.fabboutique;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +20,7 @@ import com.example.fabboutique.DataBaseHandler.DataBaseHandler;
 import com.example.fabboutique.Models.ProductCategory;
 import com.example.fabboutique.Models.User;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddCategory extends AppCompatActivity {
@@ -33,6 +36,9 @@ public class AddCategory extends AppCompatActivity {
 
     // One Preview Image
     ImageView IVPreviewImage;
+    private Bitmap imageToStore;
+    private Uri imageFilePath;
+    private static final int Pick_Image_Request=100;
 
     // constant to compare
     // the activity result code
@@ -110,7 +116,7 @@ public class AddCategory extends AppCompatActivity {
 
                 dbh=new DataBaseHandler(AddCategory.this  );
                 //inserting user to database
-                ProductCategory category = new ProductCategory(categoryName,subCategoryName,subCategoryDesc, categoryImage);
+                ProductCategory category = new ProductCategory(categoryName,subCategoryName,subCategoryDesc, imageToStore);
 
                 boolean insertState = dbh.addProductsCategory(category);
 
@@ -124,36 +130,35 @@ public class AddCategory extends AppCompatActivity {
             }
         });
     }
-
     void imageChooser() {
         // create an instance of the
         // intent of the type image
-        Intent i = new Intent();
-        i.setType("image/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
+        try {
+            Intent i = new Intent();
+            i.setType("image/*");
+            i.setAction(Intent.ACTION_GET_CONTENT);
 
-        // pass the constant to compare it
-        // with the returned requestCode
-        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+            startActivityForResult(i, Pick_Image_Request);
+        }catch (Exception e) {
+            Toast.makeText(AddCategory.this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
     // this function is triggered when user
     // selects the image from the imageChooser
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-            // compare the resultCode with the
-            // SELECT_PICTURE constant
-            if (requestCode == SELECT_PICTURE) {
-                // Get the url of the image from data
-                Uri selectedImageUri = data.getData();
-                if (null != selectedImageUri) {
-                    categoryImage = Integer.parseInt(selectedImageUri.toString());
-                    // update the preview image in the layout
-                    IVPreviewImage.setImageURI(selectedImageUri);
-                }
+        try {
+            if (requestCode == Pick_Image_Request && resultCode==RESULT_OK && data!=null && data.getData()!=null)
+            {
+                imageFilePath=data.getData();
+                imageToStore= MediaStore.Images.Media.getBitmap(getContentResolver(),imageFilePath);
+                IVPreviewImage.setImageBitmap(imageToStore);
             }
+        }catch (Exception e) {
+            Toast.makeText(AddCategory.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

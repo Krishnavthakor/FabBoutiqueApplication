@@ -5,12 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 
 import androidx.annotation.Nullable;
 
 import com.example.fabboutique.Models.ProductCategory;
 import com.example.fabboutique.Models.Products;
 import com.example.fabboutique.Models.User;
+
+import java.io.ByteArrayOutputStream;
 
 public class DataBaseHandler extends SQLiteOpenHelper {
     public  static final String dbName="FabBoutique";
@@ -74,7 +77,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
 
     public  static final String CREATE_CATEGORY_TABLE="create table "+tableCategory+"("+categoryCol1+" INTEGER PRIMARY KEY AUTOINCREMENT,"+categoryCol2+" TEXT NOT NULL,"+
-            categoryCol3+" TEXT NOT NULL,"+categoryCol4+" NUMBER NOT NULL,"+categoryCol5+" TEXT NOT NULL);";
+            categoryCol3+" TEXT NOT NULL,"+categoryCol4+" NUMBER NOT NULL,"+categoryCol5+" BLOB NOT NULL);";
 
 
 
@@ -101,6 +104,9 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public  static final String DROP_CART_TABLE="DROP TABLE IF EXISTS "+tableCart;
     public  static final String DROP_ADDRESS_TABLE="DROP TABLE IF EXISTS "+tableAddress;
 
+
+    private ByteArrayOutputStream objectByteArrayOutputStream;
+    private byte[] imageInBytes;
 
     public DataBaseHandler(@Nullable Context context) {
         super(context,dbName, null, version);
@@ -164,7 +170,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         contentValues.put(categoryCol2,category.categoryTitle);
         contentValues.put(categoryCol3,category.categoryName);
         contentValues.put(categoryCol4,category.categoryDescription);
-        contentValues.put(categoryCol5,category.getCategoryImage());
+
+        //storing image in to db
+        Bitmap imageToStoreBitmap=category.getCategoryImage();
+        objectByteArrayOutputStream=new ByteArrayOutputStream();
+        imageToStoreBitmap.compress(Bitmap.CompressFormat.JPEG,100,objectByteArrayOutputStream);
+
+        imageInBytes=objectByteArrayOutputStream.toByteArray();
+        contentValues.put(categoryCol5,imageInBytes);
 
         //if data is not inserted following method will return -1
         long result = db.insert(tableCategory,null,contentValues);
@@ -239,28 +252,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
         return cursor;
-    }
-
-    public boolean insertCategory(ProductCategory category) {
-        //instanse of SQLLITE Database
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        //getting instance of content values
-        ContentValues contentValues = new ContentValues();
-
-        //Taking content value instance and putting data into the column
-        contentValues.put(categoryCol2, category.getCategoryTitle());
-        contentValues.put(categoryCol3, category.getCategoryName());
-        contentValues.put(categoryCol4, category.getCategoryDescription());
-        contentValues.put(categoryCol5, category.getCategoryImage());
-        //if data is not inserted following method will return -1
-        long result = db.insert(tableCategory, null, contentValues);
-
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
     public Cursor getProducts(int categoryId) {

@@ -1,8 +1,10 @@
 package com.example.fabboutique.Models;
 
+import android.graphics.Bitmap;
+
 public class ProductCategory {
     public String categoryTitle,categoryName,categoryDescription;
-    int categoryImage;
+    Bitmap categoryImage;
 
     public ProductCategory()
     {}
@@ -13,7 +15,7 @@ public class ProductCategory {
         this.categoryDescription = categoryDescription;
     }
 
-    public ProductCategory(String categoryTitle, String categoryName, String categoryDescription, int categoryImage)
+    public ProductCategory(String categoryTitle, String categoryName, String categoryDescription, Bitmap categoryImage)
     {
         this.categoryDescription=categoryDescription;
         this.categoryImage=categoryImage;
@@ -24,7 +26,7 @@ public class ProductCategory {
         return this.categoryDescription;
     }
 
-    public int getCategoryImage() {
+    public Bitmap getCategoryImage() {
         return this.categoryImage;
     }
 
@@ -41,7 +43,7 @@ public class ProductCategory {
          this.categoryDescription=categoryDescription;
     }
 
-    public void setCategoryImage(int categoryImage) {
+    public void setCategoryImage(Bitmap categoryImage) {
          this.categoryImage=categoryImage;
     }
 
